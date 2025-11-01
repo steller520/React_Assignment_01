@@ -1,16 +1,71 @@
-# React + Vite
+# To-Do List (React + Vite + Tailwind)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and stylish To-Do application built with React (Vite) and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Repository
+- GitHub: https://github.com/steller520/React_Assignment_01
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- Add tasks
+- Toggle task completion
+- Edit task text (Save / Cancel)
+- Delete tasks
+- Gradient background with glass-morphism card and subtle animations
 
-## React Compiler
+## Tech Stack
+- React (Vite)
+- Tailwind CSS
+- react-icons
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started
 
-## Expanding the ESLint configuration
+```powershell
+# 1) Install dependencies
+npm install
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# 2) Start the development server
+npm run dev
+
+# 3) Build for production
+npm run build
+
+# 4) Preview the production build
+npm run preview
+```
+
+Open the local URL printed in the terminal (usually http://localhost:5173 or the next available port).
+
+## Project Structure
+- `src/App.jsx` – Root component holding tasks state and handlers
+- `src/component/Header.jsx` – App header (title + icon)
+- `src/component/ToDoList.jsx` – Input box and tasks list
+- `src/component/ToDoItem.jsx` – Single task item (toggle/edit/delete)
+
+## How It Works
+Tasks are stored in state in `App.jsx` as objects:
+
+```js
+{ id: string, text: string, isChecked: boolean }
+```
+
+Handlers in `App.jsx` are passed down as props:
+- `handleAddTask(text)` – add a new task
+- `handleToggle(index)` – toggle completion
+- `handleUpdate(index, newText)` – edit task text
+- `handleDelete(index)` – remove a task
+
+## Assignment Mapping (Module 3)
+- Components: App, Header, ToDoList, ToDoItem
+- State & Props: Tasks managed in App and passed to children
+- Lists: Rendered via `map`, using stable `task.id` keys
+- Events: Add, toggle, delete, and edit are implemented
+- Styling: Tailwind CSS with gradients and transitions
+
+## Submission Checklist
+- Remove the `node_modules` folder before zipping/uploading
+- Push at least 5 meaningful commits to GitHub
+- README includes run instructions (this document)
+
+## Troubleshooting
+- If the default port is in use, Vite will automatically choose another (e.g., 5174)
+- If Tailwind classes don’t apply, ensure CSS imports exist in `src/index.css` or `src/App.css`

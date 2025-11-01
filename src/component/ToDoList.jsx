@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ToDoItem from './ToDoItem'
 import { IoAddCircleSharp } from "react-icons/io5";
 
-function ToDoList({tasks, handleAddTask , handleDelete , handleToggle }) {
+function ToDoList({tasks, handleAddTask , handleDelete , handleToggle, handleUpdate }) {
   const [inputValue, setInputValue] = useState('');
 
   return (
@@ -37,7 +37,14 @@ function ToDoList({tasks, handleAddTask , handleDelete , handleToggle }) {
           </div>
         ) : (
           tasks.map((task, index) => (
-            <ToDoItem key={index} task={task} index={index} handleDelete={handleDelete} handleToggle={handleToggle} />
+            <ToDoItem
+              key={task.id ?? index}
+              task={task}
+              index={index}
+              handleDelete={handleDelete}
+              handleToggle={handleToggle}
+              handleUpdate={handleUpdate}
+            />
           ))
         )}
       </div>
