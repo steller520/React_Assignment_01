@@ -2,19 +2,26 @@ import React, { useState } from 'react'
 import Header from './component/Header'
 import ToDoList from './component/ToDoList'
 import { LuNotebookPen } from "react-icons/lu";
+import './App.css'
 
 function App() {
+  // state to hold tasks
   const [tasks,setTasks] = useState([])
+
+  // Add new task
   const handleAddTask = (task) => {
     const newTask = { id: Date.now().toString(36) + Math.random().toString(36).slice(2), text: task, isChecked: false }
     setTasks([...tasks, newTask])
     console.log(tasks);
   }
+
+  // Delete task
   const handleDelete = (index) => {
     const newTasks = tasks.filter((_, i) => i !== index)
     setTasks(newTasks)
   }
 
+  // Toggle task completion
   const handleToggle = (index) => {
     const newTasks = tasks.map((task, i) => {
       if (i === index) {
@@ -24,13 +31,16 @@ function App() {
     })
     setTasks(newTasks)
   } 
-
+  // Update task text
   const handleUpdate = (index, newText) => {
     const updated = tasks.map((task, i) => (i === index ? { ...task, text: newText } : task))
     setTasks(updated)
   }
 
+
   console.log(tasks);
+
+  // Render the main App component
   return (
     <>
     <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 p-5 font-sans relative overflow-hidden">
